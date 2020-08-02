@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import MapChart from '../src/MapChart/MapChart';
+import ReactDOM from "react-dom";
+/* import ReactTooltip from "react-tooltip"; */
 
-import './App.css';
+import MapChart from "./MapChart";
+
+import "./styles.css";
 
 function App() {
+  const [content, setContent] = useState("");
   return (
-    <div className="App">
-      <h1>Map Challenge</h1>
-      <MapChart />
+    <div>
+      <MapChart setTooltipContent={setContent} />
+    {/*   <ReactTooltip>{content}</ReactTooltip> */}
     </div>
   );
 }
