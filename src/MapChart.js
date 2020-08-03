@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState, useEffect } from "react";
 import {
   ZoomableGroup,
   ComposableMap,
@@ -18,7 +18,7 @@ const markers = [
   },
     ];
 
-/* const rounded = num => {
+const rounded = num => {
   if (num > 1000000000) {
     return Math.round(num / 100000000) / 10 + "Bn";
   } else if (num > 1000000) {
@@ -26,7 +26,7 @@ const markers = [
   } else {
     return Math.round(num / 100) / 10 + "K";
   }
-}; */
+};
 
 const MapChart = ({ setTooltipContent }) => {
   const [country, setCountry] = useState({
@@ -40,12 +40,22 @@ const MapChart = ({ setTooltipContent }) => {
   const fetchCountry = () => {
     fetch(CORSURL + `http://egollas.com/api.json`)
     .then(response => response.json())
-    .then(data => setCountry(data))
+    .then(data => {
+      console.log(data)
+      setCountry(data)
+    })
     .catch(error => console.log('Error: ', error))
   }
   console.log(country)
 
+  useEffect(() => {
+    fetchCountry()
+  }, [])
 
+  const results = country.hits.hits.filter(countryId => {
+    return countryId._id === 'CO_2020-04-19'
+  })
+  console.log(results)
 
   return (
     <>
@@ -88,8 +98,17 @@ const MapChart = ({ setTooltipContent }) => {
                 
                 <g
                   onMouseEnter = {() => { /* MAP ARRAY AND FETCH SPECIFIC DATA */
-                    const { hits } = country.hits;
-                    setTooltipContent(`${hits}`)              
+                    setTooltipContent(
+                      <>
+                        <p>{rounded(results[0]._source.TotalCount)}</p>
+                        <p>{results[0]._source.Date}</p>
+                        <p>{results[0]._source.Perc_lt_30ms}</p>
+                        <p>{results[0]._source.Perc_30ms_60ms}</p>
+                        <p>{results[0]._source.Perc_60ms_90ms}</p>
+                        <p>{results[0]._source.Perc_90ms_150ms}</p>
+                        <p>{results[0]._source.Perc_gt_150ms}</p>
+                      </>
+                        )              
                   }}
                   onMouseLeave={() => {
                     setTooltipContent("");
