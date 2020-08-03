@@ -29,6 +29,7 @@ const rounded = num => {
 };
 
 const MapChart = ({ setTooltipContent }) => {
+
   const [country, setCountry] = useState({
     hits: {
       hits: []
@@ -46,7 +47,6 @@ const MapChart = ({ setTooltipContent }) => {
     })
     .catch(error => console.log('Error: ', error))
   }
-  console.log(country)
 
   useEffect(() => {
     fetchCountry()
@@ -55,7 +55,6 @@ const MapChart = ({ setTooltipContent }) => {
   const results = country.hits.hits.filter(countryId => {
     return countryId._id === 'CO_2020-04-19'
   })
-  console.log(results)
 
   return (
     <>
@@ -67,13 +66,6 @@ const MapChart = ({ setTooltipContent }) => {
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  /* onMouseEnter={() => {
-                    const { NAME, POP_EST } = geo.properties;
-                    setTooltipContent(`${NAME} — ${rounded(POP_EST)}`);
-                  }}
-                  onMouseLeave={() => {
-                    setTooltipContent("");
-                  }} */
                   style={{
                     default: {
                       fill: "#dbdbdb",
@@ -97,7 +89,7 @@ const MapChart = ({ setTooltipContent }) => {
               <Marker key={name} coordinates={coordinates}>
                 
                 <g
-                  onMouseEnter = {() => { /* MAP ARRAY AND FETCH SPECIFIC DATA */
+                  onMouseEnter = {() => {
                     setTooltipContent(
                       <>
                         <p>{rounded(results[0]._source.TotalCount)}</p>
