@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from "react";
+import React, { memo, useState } from "react";
 import {
   ZoomableGroup,
   ComposableMap,
@@ -7,8 +7,7 @@ import {
   Marker
 } from "react-simple-maps";
 
-const geoUrl =
-  "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
+const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
 
 const markers = [
@@ -19,7 +18,7 @@ const markers = [
   },
     ];
 
-const rounded = num => {
+/* const rounded = num => {
   if (num > 1000000000) {
     return Math.round(num / 100000000) / 10 + "Bn";
   } else if (num > 1000000) {
@@ -27,13 +26,12 @@ const rounded = num => {
   } else {
     return Math.round(num / 100) / 10 + "K";
   }
-};
+}; */
 
 const MapChart = ({ setTooltipContent }) => {
   const [country, setCountry] = useState({
     hits: {
-      hits: [],
-      total: '',
+      hits: []
     }
   });
 
@@ -47,9 +45,7 @@ const MapChart = ({ setTooltipContent }) => {
   }
   console.log(country)
 
-  useEffect(() => {
-    fetchCountry();
-  })
+
 
   return (
     <>
@@ -91,7 +87,7 @@ const MapChart = ({ setTooltipContent }) => {
               <Marker key={name} coordinates={coordinates}>
                 
                 <g
-                  onMouseEnter = {() => {
+                  onMouseEnter = {() => { /* MAP ARRAY AND FETCH SPECIFIC DATA */
                     const { hits } = country.hits;
                     setTooltipContent(`${hits}`)              
                   }}
