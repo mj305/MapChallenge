@@ -1,6 +1,6 @@
 # Map Challenge  -  React App
 
--This is a super cool Marvel App were you can check out tons of characters and learn more about your favorite heroes!
+-This is a super cool Map Challenge!
 
 
 ## Technologies used
@@ -9,7 +9,7 @@
 - API URL
 
 
-## The Marvel Developer API
+## Country Data API
 - The API Website: http://egollas.com/api.json
 - Free Public API Key.
 
