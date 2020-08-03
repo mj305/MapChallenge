@@ -10,6 +10,7 @@ function App() {
   const [content, setContent] = useState("");
   return (
     <div>
+      <h1>Map Challenge</h1>
       <MapChart setTooltipContent={setContent} />
       <ReactTooltip>{content}</ReactTooltip>
     </div>
