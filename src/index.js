@@ -5,14 +5,15 @@ import ReactTooltip from "react-tooltip";
 import "./styles.css";
 
 import MapChart from "./MapChart";
+import StackGraph from "./StackGraph"
 
 function App() {
   const [content, setContent] = useState("");
   return (
-    <div>
-      <h1>Map Challenge</h1>
+    <div className="App">
       <MapChart setTooltipContent={setContent} />
       <ReactTooltip>{content}</ReactTooltip>
+      <StackGraph />
     </div>
   );
 }
