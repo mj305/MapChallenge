@@ -92,7 +92,8 @@ const MapChart = ({ setTooltipContent }) => {
                 
                 <g
                   onMouseEnter = {() => {
-                    setTooltipContent(`{country.hits.total}`);                
+                    const { hits } = country.hits;
+                    setTooltipContent(`${hits}`)              
                   }}
                   onMouseLeave={() => {
                     setTooltipContent("");
