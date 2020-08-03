@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import {
   ZoomableGroup,
   ComposableMap,
@@ -48,13 +48,13 @@ const MapChart = ({ /* setTooltipContent */ }) => {
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  onMouseEnter={() => {
+                  /* onMouseEnter={() => {
                     const { NAME, POP_EST } = geo.properties;
-                    /* setTooltipContent(`${NAME} — ${rounded(POP_EST)}`); */
+                    setTooltipContent(`${NAME} — ${rounded(POP_EST)}`);
                   }}
                   onMouseLeave={() => {
-                   /*  setTooltipContent(""); */
-                  }}
+                    setTooltipContent("");
+                  }} */
                   style={{
                     default: {
                       fill: "#dbdbdb",
@@ -82,7 +82,6 @@ const MapChart = ({ /* setTooltipContent */ }) => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   transform="translate(-12, -24)"
-                  hover=""
                 >
                   <circle cx="12" cy="10" r="3" />
                   <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
