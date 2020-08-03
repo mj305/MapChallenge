@@ -1,4 +1,4 @@
-# Marvel API  -  React App
+# Map Challenge  -  React App
 
 -This is a super cool Marvel App were you can check out tons of characters and learn more about your favorite heroes!
 
