@@ -26,7 +26,7 @@ const StackGraph = () => {
   }, [])
 
   return (
-    <p>Stack Graph Component</p>
+    <p>Stack Graph</p>
   )
 };
 
